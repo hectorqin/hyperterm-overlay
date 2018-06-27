@@ -160,7 +160,7 @@ class Overlay {
       hasShadow: false,
       hideDock: false,
       hideOnBlur: false,
-      hotkeys: ['Option+Space'],
+      hotkeys: isMac ? ['Option+Space'] : ['Control+Space'],
       position: 'top',
       primaryDisplay: false,
       resizable: true,
