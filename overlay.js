@@ -240,7 +240,7 @@ class Overlay {
       this._win.setBounds({x: x + width - 1, y: y + height, width: 1, height: 0}, this._config.animate);
       break;
     case 'center':
-      this._win.setBounds({x, y, width: 1, height: 1}, this._config.animate);
+      this._win.setBounds({x: Math.abs(width / 4), y: Math.abs(height / 4), width: Math.abs(width / 2), height: Math.abs(height / 2)}, this._config.animate);
       break;
     case 'left':
       this._win.setBounds({x, y, width: 1, height}, this._config.animate);
