@@ -60,18 +60,21 @@ module.exports = {
       hasShadow: false,
       hideDock: false,
       hideOnBlur: false,
-      hotkeys: ['Option+Space'],
+      hotkeys: ['Control+Space'], // On MacOS hotkey is default to Option + Space!
       position: 'top',
       primaryDisplay: false,
       resizable: true,
+      size: {
+        width: 0.4,
+        height: 0.4
+      },
       startAlone: false,
       startup: false,
-      size: 0.4,
       tray: true,
       unique: false
     }
   },
-  //...
+  // ...
 };
 ```
 

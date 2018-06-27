@@ -90,11 +90,11 @@ class Overlay {
           switch (this._config.position) {
           case 'top':
           case 'bottom':
-            this._config.size = win.getSize()[1];
+            this._config.size.height = win.getSize()[1];
             break;
           case 'right':
           case 'left':
-            this._config.size = win.getSize()[0];
+            this._config.size.width = win.getSize()[0];
             break;
           case 'topLeft':
           case 'topRight':
@@ -102,8 +102,8 @@ class Overlay {
           case 'bottomRight':
           case 'center':
           default:
-            this._config.size = win.getSize()[0];
-            this._config.size = win.getSize()[1];
+            this._config.size.width = win.getSize()[0];
+            this._config.size.height = win.getSize()[1];
             break;
           }
         }
@@ -164,7 +164,10 @@ class Overlay {
       position: 'top',
       primaryDisplay: false,
       resizable: true,
-      size: 0.4,
+      size: {
+        width: 0.4,
+        height: 0.4
+      },
       startAlone: false,
       startup: false,
       tray: true,
@@ -225,35 +228,53 @@ class Overlay {
 
   _startBounds () {
     const {x, y, width, height} = this._getDisplay().workArea;
+    let heightSize = null,
+      widthSize = null;
 
     switch (this._config.position) {
     case 'topLeft':
-      this._win.setBounds({x, y, width: 1, height: 0}, this._config.animate);
+      widthSize = this._config.size.width > 1 ? this._config.size.width : Math.round(width * this._config.size.width);
+      heightSize = this._config.size.height > 1 ? this._config.size.height : Math.round(height * this._config.size.height);
+      this._win.setBounds({x, y, width: widthSize, height: heightSize}, this._config.animate);
       break;
     case 'bottomLeft':
-      this._win.setBounds({x, y: y + height, width: 1, height: 0}, this._config.animate);
+      widthSize = this._config.size.width > 1 ? this._config.size.width : Math.round(width * this._config.size.width);
+      heightSize = this._config.size.height > 1 ? this._config.size.height : Math.round(height * this._config.size.height);
+      this._win.setBounds({x, y: y + height, width: widthSize, height: heightSize}, this._config.animate);
       break;
     case 'topRight':
-      this._win.setBounds({x: x + width - 1, y, width: 1, height: 0}, this._config.animate);
+      widthSize = this._config.size.width > 1 ? this._config.size.width : Math.round(width * this._config.size.width);
+      heightSize = this._config.size.height > 1 ? this._config.size.height : Math.round(height * this._config.size.height);
+      this._win.setBounds({x: x + width - 1, y, width: widthSize, height: heightSize}, this._config.animate);
       break;
     case 'bottomRight':
-      this._win.setBounds({x: x + width - 1, y: y + height, width: 1, height: 0}, this._config.animate);
+      widthSize = this._config.size.width > 1 ? this._config.size.width : Math.round(width * this._config.size.width);
+      heightSize = this._config.size.height > 1 ? this._config.size.height : Math.round(height * this._config.size.height);
+      this._win.setBounds({x: x + width - 1, y: y + height, width: widthSize, height: heightSize}, this._config.animate);
       break;
     case 'center':
       this._win.setBounds({x: Math.abs(width / 4), y: Math.abs(height / 4), width: Math.abs(width / 2), height: Math.abs(height / 2)}, this._config.animate);
       break;
     case 'left':
-      this._win.setBounds({x, y, width: 1, height}, this._config.animate);
+      widthSize = this._config.size.width > 1 ? this._config.size.width : Math.round(width * this._config.size.width);
+      heightSize = this._config.size.height > 1 ? this._config.size.height : Math.round(height * this._config.size.height);
+      this._win.setBounds({x, y, width: widthSize, height}, this._config.animate);
       break;
     case 'right':
-      this._win.setBounds({x: x + width - 1, y, width: 1, height}, this._config.animate);
+      widthSize = this._config.size.width > 1 ? this._config.size.width : Math.round(width * this._config.size.width);
+      heightSize = this._config.size.height > 1 ? this._config.size.height : Math.round(height * this._config.size.height);
+      this._win.setBounds({x: x + width - 1, y, width: widthSize, height}, this._config.animate);
       break;
     case 'bottom':
-      this._win.setBounds({x, y: y + height, width, height: 0}, this._config.animate);
+      widthSize = this._config.size.width > 1 ? this._config.size.width : Math.round(width * this._config.size.width);
+      heightSize = this._config.size.height > 1 ? this._config.size.height : Math.round(height * this._config.size.height);
+      this._win.setBounds({x, y: y + height, width, height: heightSize}, this._config.animate);
       break;
     default:
     case 'top':
-      this._win.setBounds({x, y, width, height: 0}, this._config.animate);
+      widthSize = this._config.size.width > 1 ? this._config.size.width : Math.round(width * this._config.size.width);
+      heightSize = this._config.size.height > 1 ? this._config.size.height : Math.round(height * this._config.size.height);
+      this._win.setBounds({x, y, width, height: heightSize}, this._config.animate);
       break;
     }
   }
@@ -267,45 +288,45 @@ class Overlay {
     // end position
     switch (this._config.position) {
     case 'topLeft':
-      widthSize = this._config.size > 1 ? this._config.size : Math.round(width * this._config.size);
-      heightSize = this._config.size > 1 ? this._config.size : Math.round(height * this._config.size);
+      widthSize = this._config.size.width > 1 ? this._config.size.width : Math.round(width * this._config.size.width);
+      heightSize = this._config.size.height > 1 ? this._config.size.height : Math.round(height * this._config.size.height);
       this._win.setBounds({x, y, width: widthSize, height: heightSize}, this._config.animate);
       break;
     case 'bottomLeft':
-      widthSize = this._config.size > 1 ? this._config.size : Math.round(width * this._config.size);
-      heightSize = this._config.size > 1 ? this._config.size : Math.round(height * this._config.size);
+      widthSize = this._config.size.width > 1 ? this._config.size.width : Math.round(width * this._config.size.width);
+      heightSize = this._config.size.height > 1 ? this._config.size.height : Math.round(height * this._config.size.height);
       this._win.setBounds({x, y: y + height - heightSize, width: widthSize, height: heightSize}, this._config.animate);
       break;
     case 'topRight':
-      widthSize = this._config.size > 1 ? this._config.size : Math.round(width * this._config.size);
-      heightSize = this._config.size > 1 ? this._config.size : Math.round(height * this._config.size);
+      widthSize = this._config.size.width > 1 ? this._config.size.width : Math.round(width * this._config.size.width);
+      heightSize = this._config.size.height > 1 ? this._config.size.height : Math.round(height * this._config.size.height);
       this._win.setBounds({x: width - widthSize, y, width: widthSize, height: heightSize}, this._config.animate);
       break;
     case 'bottomRight':
-      widthSize = this._config.size > 1 ? this._config.size : Math.round(width * this._config.size);
-      heightSize = this._config.size > 1 ? this._config.size : Math.round(height * this._config.size);
+      widthSize = this._config.size.width > 1 ? this._config.size.width : Math.round(width * this._config.size.width);
+      heightSize = this._config.size.height > 1 ? this._config.size.height : Math.round(height * this._config.size.height);
       this._win.setBounds({x: width - widthSize, y: y + height - heightSize, width: widthSize, height: heightSize}, this._config.animate);
       break;
     case 'center':
-      widthSize = this._config.size > 1 ? this._config.size : Math.round(width * this._config.size);
-      heightSize = this._config.size > 1 ? this._config.size : Math.round(height * this._config.size);
+      widthSize = this._config.size.width > 1 ? this._config.size.width : Math.round(width * this._config.size.width);
+      heightSize = this._config.size.height > 1 ? this._config.size.height : Math.round(height * this._config.size.height);
       this._win.setBounds({x: width / 4, y: height / 4, width: width / 2, height: height / 2}, this._config.animate);
       break;
     case 'left':
-      widthSize = this._config.size > 1 ? this._config.size : Math.round(width * this._config.size);
+      widthSize = this._config.size.width > 1 ? this._config.size.width : Math.round(width * this._config.size.width);
       this._win.setBounds({x, y, width: widthSize, height}, this._config.animate);
       break;
     case 'bottom':
-      heightSize = this._config.size > 1 ? this._config.size : Math.round(height * this._config.size);
+      heightSize = this._config.size.height > 1 ? this._config.size.height : Math.round(height * this._config.size.height);
       this._win.setBounds({x, y: y + height - heightSize, width, height: heightSize}, this._config.animate);
       break;
     case 'right':
-      widthSize = this._config.size > 1 ? this._config.size : Math.round(width * this._config.size);
+      widthSize = this._config.size.width > 1 ? this._config.size.width : Math.round(width * this._config.size.width);
       this._win.setBounds({x: width - widthSize, y, width: widthSize, height}, this._config.animate);
       break;
     default:
     case 'top':
-      heightSize = this._config.size > 1 ? this._config.size : Math.round(height * this._config.size);
+      heightSize = this._config.size.height > 1 ? this._config.size.height : Math.round(height * this._config.size.height);
       this._win.setBounds({x, y, width, height: heightSize}, this._config.animate); 
       break;
     }
