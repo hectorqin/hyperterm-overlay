@@ -20,9 +20,8 @@ class Overlay {
     this._forceStartup = false;
 
     // store tray images
-    this._trayImage = nativeImage.createFromPath(path.join(__dirname, 'images', 'trayTemplate.png'));
-    this._tray2Image = nativeImage.createFromPath(path.join(__dirname, 'images', 'tray2Template.png'));
-    this._trayPressedImage = nativeImage.createFromPath(path.join(__dirname, 'images', 'tray-hover.png'));
+    this._trayImage = nativeImage.createFromPath(path.join(__dirname, 'assets/traystatic.png'));
+    this._trayPressedImage = nativeImage.createFromPath(path.join(__dirname, 'assets/trayhover.png'));
   }
 
   // app started
@@ -143,7 +142,7 @@ class Overlay {
         this._app.dock.show();
       }
 
-      // removing the initial windows of hyperterm
+      // removing the initial windows of Hyper
       if ((userConfig.unique && !this._config.unique) || (userConfig.startAlone && !reapply)) {
         this._app.getWindows().forEach((win) => {
           if (win !== this._win) {
@@ -193,7 +192,7 @@ class Overlay {
     if (this._config.tray && !this._tray) {
       // prevent destroy / create bug
       this._tray = new Tray(this._trayImage);
-      this._tray.setToolTip('Open HyperTerm Overlay');
+      this._tray.setToolTip('Open Hyper Overlay');
       this._tray.setPressedImage(this._trayPressedImage);
       this._tray.on('click', () => this.interact());
       trayCreated = true;
@@ -341,17 +340,16 @@ class Overlay {
     }
 
     // tool tip
-    this._tray.setToolTip('Close HyperTerm Overlay');
+    this._tray.setToolTip('Close Hyper Overlay');
 
     if (isMac) {
       if (this._trayAnimation) {
         clearInterval(this._trayAnimation);
       }
-      let type = 0;
 
       this._trayAnimation = setInterval(() => {
         if (this._tray) {
-          this._tray.setImage(++type % 2 ? this._trayImage : this._tray2Image);
+          this._tray.setImage(this._trayImage);
         }
       }, 400);
     }
@@ -364,7 +362,7 @@ class Overlay {
     }
 
     if (this._tray) {
-      this._tray.setToolTip('Open HyperTerm Overlay');
+      this._tray.setToolTip('Open Hyper Overlay');
       if (isMac) {
         this._tray.setImage(this._trayImage);
       }
