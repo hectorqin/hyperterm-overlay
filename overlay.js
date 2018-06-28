@@ -185,6 +185,8 @@ class Overlay {
       globalShortcut.register(hotkey, () => this.interact());
     }
 
+    globalShortcut.register('Escape', () => this.hide());
+
     // tray icon
     let trayCreated = false;
 
