@@ -66,7 +66,10 @@ module.exports = {
       hasShadow: false,
       hideDock: false,
       hideOnBlur: false,
-      hotkeys: ['Control+Space'], // On MacOS hotkey is default to Option + Space!
+      hotkeys: {
+        open: ['Control+Space'], // On MacOS hotkey is default to Option + Space!
+        close: ['Shift+Escape'], // On MacOS hotkey is default to Option + Escape!
+      },
       position: 'top',
       primaryDisplay: false,
       resizable: true,
@@ -110,10 +113,17 @@ module.exports = {
 - Removes the Hyper dock icon. It works only when the `unique` option is activated.
 
 ### hotkeys
+
+#### Open
 - Value: array of hotkey strings
 - Default: ['Option+Space'] on MacOS or ['Control+Space'] on Windows / Linux
 - Specify one or more hotkeys to show and hide the Hyper Overlay (see: [`Accelerator`](https://github.com/electron/electron/blob/master/docs/api/accelerator.md))
-- Note: `Escape` is reserved for closing overlay!
+
+#### Close (hide)
+- Value: array of hotkey strings
+- Default: ['Option+Escape'] on MacOS or ['Shift+Escape'] on Windows / Linux
+- Specify one or more hotkeys to hide the Hyper Overlay (see: [`Accelerator`](https://github.com/electron/electron/blob/master/docs/api/accelerator.md))
+
 
 ### position
 - Value: `top`, `bottom`, `left`, `right`, `topRight`, `topLeft`, `bottomRight`, `bottomLeft`, `center`
@@ -137,12 +147,16 @@ module.exports = {
 </div>
 
 ### size
-- Value: float or number
+
+#### width
+- Value: A value between 0.1 and 1
 - Default: 0.4
-- The size of Hyper Overlay when it is showing.
- The possible values are a `number` or a `float`.
- If is a number, it represents the size um pixels.
- Else, if is a float, it means the percentage of the screen.
+- The width of Hyper Overlay when it is showing.
+
+#### height
+- Value: A value between 0.1 and 1
+- Default: 0.4
+- The height of Hyper Overlay when it is showing.
 
 ### startAlone
 - Value: true or false

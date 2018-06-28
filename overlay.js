@@ -159,7 +159,10 @@ class Overlay {
       hasShadow: false,
       hideDock: false,
       hideOnBlur: false,
-      hotkeys: isMac ? ['Option+Space'] : ['Control+Space'],
+      hotkeys: {
+        open: isMac ? ['Option+Space'] : ['Control+Space'],
+        close: isMac ? ['Option+Escape'] : ['Shift+Escape']
+      },
       position: 'top',
       primaryDisplay: false,
       resizable: true,
@@ -180,11 +183,13 @@ class Overlay {
 
     // registering the hotkeys
     globalShortcut.unregisterAll();
-    for (const hotkey of this._config.hotkeys) {
+    for (const hotkey of this._config.hotkeys.open) {
       globalShortcut.register(hotkey, () => this.interact());
     }
 
-    globalShortcut.register('Escape', () => this.hide());
+    for (const hotkey of this._config.hotkeys.close) {
+      globalShortcut.register(hotkey, () => this.hide());
+    }
 
     // tray icon
     let trayCreated = false;
