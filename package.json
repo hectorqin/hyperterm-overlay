@@ -1,6 +1,6 @@
 {
     "name": "hyper-overlay",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "A complete and customizable solution for a permanent, dropdown, hotkey and overlay window in your Hyper.app",
     "author": "Favna <sharkie.jeroen@gmail.com> (https://favna.xyz/home)",
     "license": "MIT",
