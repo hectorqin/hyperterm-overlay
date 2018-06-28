@@ -172,6 +172,12 @@ module.exports = {
 
 [MIT](LICENSE.md)
 
+## Other plugins in gifs
+
+[hyper-material-theme](https://www.npmjs.com/package/hyper-material-theme)
+[hyper-tab-icons](https://www.npmjs.com/package/hyper-tab-icons)
+[hyper2-border](https://www.npmjs.com/package/hyper2-border)
+
 
 ## Buy me a donut
 
