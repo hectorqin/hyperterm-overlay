@@ -30,6 +30,8 @@
 
 A complete and customizable solution for a permanent / dropdown / hotkey / overlay window in your Hyper Terminal, accessible via hotkeys and/or toolbar icon (tray).
 
+Open your overlay with `Option + Space` on MacOS or `Control + Space` on Windows / Linux or by clicking the tray icon. `Escape` is the hotkey for hiding the overlay, or you can press `X`, `-`, or click the tray icon again.
+
 This has been forked from [hyperterm-overlay](https://github.com/rickgbw/hyperterm-overlay) which appears to have been deserted and aims to fix some of the issues on that GitHub repository.
 
 **Important:** Designed for Hyper >= 2.0.0
@@ -109,8 +111,9 @@ module.exports = {
 
 ### hotkeys
 - Value: array of hotkey strings
-- Default: ['Option+Space'] on MacOS or ['Control+Space'] on Windows
+- Default: ['Option+Space'] on MacOS or ['Control+Space'] on Windows / Linux
 - Specify one or more hotkeys to show and hide the Hyper Overlay (see: [`Accelerator`](https://github.com/electron/electron/blob/master/docs/api/accelerator.md))
+- Note: `Escape` is reserved for closing overlay!
 
 ### position
 - Value: `top`, `bottom`, `left`, `right`, `topRight`, `topLeft`, `bottomRight`, `bottomLeft`, `center`
