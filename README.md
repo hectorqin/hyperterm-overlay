@@ -22,7 +22,7 @@
 
 <div align="center">
 <p>
-<img src="https://cloud.githubusercontent.com/assets/924158/17121698/d122bcaa-52ab-11e6-876c-25a267d00e89.gif" title="homeMacOS" alt="homeMacOS"/><img src="https://raw.githubusercontent.com/Favna/hyper-overlay/master/assets/home.gif" title="homeWin" alt="homeWin"/>
+<img src="https://cloud.githubusercontent.com/assets/924158/17121698/d122bcaa-52ab-11e6-876c-25a267d00e89.gif" title="homeMacOS" alt="homeMacOS" width="430" align="middle"/><img src="https://raw.githubusercontent.com/Favna/hyper-overlay/master/assets/home.gif" title="homeWin" alt="homeWin" width="430" align="middle"/>
 </p>
 </div>
 
@@ -142,7 +142,7 @@ module.exports = {
 
 <div align="center">
   <p>
-    <img src="https://cloud.githubusercontent.com/assets/924158/17121469/5281a916-52aa-11e6-92f5-fa1c3dff75c8.gif" title="resizeMacOS" alt="resizeMacOS"/><img src="https://raw.githubusercontent.com/Favna/hyper-overlay/master/assets/resize.gif" title="resizeWin" alt="resizeWin"/>
+    <img src="https://cloud.githubusercontent.com/assets/924158/17121469/5281a916-52aa-11e6-92f5-fa1c3dff75c8.gif" title="resizeMacOS" alt="resizeMacOS" width="430" align="middle" /><img src="https://raw.githubusercontent.com/Favna/hyper-overlay/master/assets/resize.gif" title="resizeWin" alt="resizeWin" width="430" align="middle" />
   </p>
 </div>
 
@@ -176,7 +176,7 @@ module.exports = {
 
 <div align="center">
   <p>
-    <img src="https://cloud.githubusercontent.com/assets/924158/17121470/5294b02e-52aa-11e6-9bca-9d70f186c60b.gif" title="trayMacOS" alt="trayMacOS"/><img src="https://raw.githubusercontent.com/Favna/hyper-overlay/master/assets/hideonblur.gif" title="trayWin" alt="trayWin"/>
+    <img src="https://cloud.githubusercontent.com/assets/924158/17121470/5294b02e-52aa-11e6-9bca-9d70f186c60b.gif" title="trayMacOS" alt="trayMacOS" width="430" align="middle" /><img src="https://raw.githubusercontent.com/Favna/hyper-overlay/master/assets/hideonblur.gif" title="trayWin" alt="trayWin" width="430" align="middle" />
   </p>
 </div>
 
