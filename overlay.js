@@ -55,6 +55,10 @@ class Overlay {
                 this.show();
             }
         });
+
+        this._app.on('activate', ()=>{
+            this.interact()
+        })
     }
 
     // checks if new window could be created
