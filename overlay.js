@@ -24,6 +24,7 @@ class Overlay {
         this._trayAnimation = null;
         this._lastFocus = null;
         this._forceStartup = false;
+        this._distroyed = false;
 
         // store tray images
         this._trayImage = nativeImage.createFromPath(path.join(__dirname, 'assets/images', 'trayTemplate.png'));
@@ -57,7 +58,9 @@ class Overlay {
         });
 
         this._app.on('activate', ()=>{
-            this.interact()
+            if(!this._distroyed){
+                this.interact()
+            }
         })
     }
 
@@ -605,6 +608,7 @@ class Overlay {
         this._animating = false;
         this._config = {};
         this._lastFocus = null;
+        this._distroyed = true;
     }
 }
 
