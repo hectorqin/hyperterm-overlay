@@ -25,6 +25,9 @@ const decorateMenu = menu => menu.map(
     newItem.submenu = newItem.submenu.concat({
       label: 'Show/Hide Overlay',
       click: () => overlay.interact()
+    }, {
+      label: 'Pin/Unpin Overlay',
+      click: () => overlay.togglePin()
     });
 
     return newItem;

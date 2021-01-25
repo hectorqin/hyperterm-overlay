@@ -25,6 +25,7 @@ class Overlay {
         this._lastFocus = null;
         this._forceStartup = false;
         this._distroyed = false;
+        this._pinned = false;
 
         // store tray images
         this._trayImage = nativeImage.createFromPath(path.join(__dirname, 'assets/images', 'trayTemplate.png'));
@@ -92,7 +93,7 @@ class Overlay {
 
             // hide window when loses focus
             win.on('blur', () => {
-                if (this._config.hideOnBlur) {
+                if (this._config.hideOnBlur && !this._pinned) {
                     this.hide();
                 }
             });
@@ -519,6 +520,10 @@ class Overlay {
         } else {
             this.hide();
         }
+    }
+
+    togglePin() {
+        this._pinned = !this._pinned;
     }
 
     // show the overlay window
